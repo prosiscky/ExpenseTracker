@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+<!-- Removing th html, head and body tags. extended from base.html -->
+{% block body %}
+<!-- placing entire form inside a bootstrap container -->
+<div class="container">
+    <!-- creating a row to contain the entire form -->
+    <!-- which makes the form a single record -->
+    <div class="row">
+        <!-- Creating  a column that will hold each field from the form -->
+        <!-- This is achieved by pasting the form in the column making each field -->
+        <!-- in the form a column in the row containing the column -->
+        <div class="col-md-6">
+            <h3>Edit Expense</h3>
+            <form action="/edit" method="POST">
+                <input type="hidden" value="{{expense.id}}" name="id" id="">
+                <!-- group each field of the form in a bootstrap form-goup-->
+                <div class="form-group">
+                    <label for="">Date</label>
+                    <!-- add value property to the field and set it to date using jinja2 -->
+                    <input class="form-control" value="{{expense.date}}" type="date" name="date" id="date">
+                </div>
+                <div class="form-group">
+                    <label for="">Expense name</label>
+                    <!-- add value property to the field and set it to expensename using jinja2 syntax -->
+                    <input class="form-control" value="{{expense.expensename}}" type="text" name="expensename" id="expensename">
+                </div>
+                <div class="form-group">
+                    <label for="">Expense amount</label>
+                    <!-- add value property to the field and set it to amount using jinja2 syntax -->
+                    <input class="form-control" value="{{expense.amount}}" type="text" name="amount" id="amount">
+                </div>
+                <div class="form-group">
+                    <label for="">Expense category</label>
+                    <select class="form-control" name="category" id="category">
+                        <option value="food" {% if expense.category == 'food' %}selected{% endif %}>Food</option>
+                        <option value="entertainment" {% if expense.category == 'entertainment' %}selected{% endif %}>Entertainment</option>
+                        <option value="business" {% if expense.category == 'business' %}selected{% endif %}>Business</option>
+                        <option value="transport" {% if expense.category == 'transport' %}selected{% endif %}>Transport</option>
+                        <option value="other" {% if expense.category == 'other' %}selected{% endif %}>Other</option>
+                    </select>
+                </div> 
+                <input class="btn btn-success" type="submit" value="Update" id="">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

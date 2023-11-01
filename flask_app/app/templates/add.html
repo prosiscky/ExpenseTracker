@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+<!-- Removing th html, head and body tags. extended from base.html -->
+{% block body %}
+<!-- placing entire form inside a bootstrap container -->
+<div class="container">
+    <!-- creating a row to contain the entire form -->
+    <!-- which makes the form a single record -->
+    <div class="row">
+        <!-- Creating  a column that will hold each field from the form -->
+        <!-- This is achieved by pasting the form in the column making each field -->
+        <!-- in the form a column in the row containing the column -->
+        <div class="col-md-6">
+            <h3>Add Expense</h3>
+            <form action="/addexpense" method="POST">
+                <!-- group each field of the form in a bootstrap form-goup-->
+                <div class="form-group">
+                    <label for="">Date</label>
+                    <input class="form-control" type="date" name="date" id="date">
+                </div>
+                <div class="form-group">
+                    <label for="">Expense name</label>
+                    <input class="form-control" type="text" name="expensename" id="expensename">
+                </div>
+                <div class="form-group">
+                    <label for="">Expense amount</label>
+                    <input class="form-control" type="text" name="amount" id="amount">
+                </div>
+                <div class="form-group">
+                    <label for="">Expense category</label>
+                    <select class="form-control" name="category" id="category">
+                        <option value="food">Food</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="business">Business</option>
+                        <option value="transport">Transport</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                
+                
+                
+                <input class="btn btn-danger" type="submit" value="Add" id="">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
